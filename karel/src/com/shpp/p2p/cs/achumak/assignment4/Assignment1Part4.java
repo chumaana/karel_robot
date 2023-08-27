@@ -18,7 +18,10 @@ public class Assignment1Part4 extends KarelTheRobot {
 
         }
 
+        if (frontIsBlocked()) {
+            fillFirstLine();
 
+        }
     }
 
     private void returnToSouthBorder() throws Exception {
