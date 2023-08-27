@@ -1,8 +1,8 @@
-package com.shpp.p2p.cs.achumak.assignment2;
+package com.shpp.p2p.cs.achumak.assignment3;
 
 import com.shpp.karel.KarelTheRobot;
 
-public class Assignment1Part2 extends KarelTheRobot {
+public class Assignment1Part3 extends KarelTheRobot{
 
 // this is method where Karel exits the house, picks the beeper
 // and returns to the start position
@@ -15,10 +15,11 @@ public class Assignment1Part2 extends KarelTheRobot {
         completeTheColumn();
 
 
+
     }
 
     private void goToNextColumn() throws Exception {
-        for (int i = 0; i < 4; i++) {
+        for(int i=0;i<4;i++){
             move();
         }
     }
@@ -32,16 +33,16 @@ public class Assignment1Part2 extends KarelTheRobot {
     }
 
     private void putAllBeepersInColumn() throws Exception {
-        while (frontIsClear()) {
+        while(frontIsClear()){
             putBeeperIfNecessary();
 
-            move();
+         move();
         }
         putBeeperIfNecessary();
     }
 
     private void putBeeperIfNecessary() throws Exception {
-        if (!beepersPresent()) {
+        if(!beepersPresent()){
             putBeeper();
         }
     }
@@ -53,12 +54,34 @@ public class Assignment1Part2 extends KarelTheRobot {
     }
 
     private void goUntilWall() throws Exception {
-        while (frontIsClear()) {
+        while(frontIsClear()){
             move();
         }
 
     }
 
+    private void returnToStartPosition() throws Exception {
+        turnLeft();
+        turnLeft();
+        for(int i=0;i<4;i++){
+            move();
+        }
+        turnRight();
+        move();
+        turnRight();
+
+    }
+
+    private void exitHouse() throws Exception {
+        move();
+        move();
+        turnRight();
+        move();
+        turnLeft();
+        move();
+        move();
+
+    }
 
     private void turnRight() throws Exception {
         turnLeft();
