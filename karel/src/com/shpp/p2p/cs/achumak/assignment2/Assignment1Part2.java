@@ -8,10 +8,49 @@ public class Assignment1Part2 extends KarelTheRobot{
 // and returns to the start position
 
     public void run() throws Exception {
-        goUntilWall();
+        while (frontIsClear()) {
+            completeTheColumn();
+            goToNextColumn();
+        }
+        completeTheColumn();
 
-        pickBeeper();
-        returnToStartPosition();
+
+
+    }
+
+    private void goToNextColumn() throws Exception {
+        for(int i=0;i<4;i++){
+            move();
+        }
+    }
+
+    private void completeTheColumn() throws Exception {
+        turnLeft();
+        goUntilWall();
+        turnAround();
+        putAllBeepersInColumn();
+        turnLeft();
+    }
+
+    private void putAllBeepersInColumn() throws Exception {
+        while(frontIsClear()){
+            putBeeperIfNecessary();
+
+         move();
+        }
+        putBeeperIfNecessary();
+    }
+
+    private void putBeeperIfNecessary() throws Exception {
+        if(!beepersPresent()){
+            putBeeper();
+        }
+    }
+
+
+    private void turnAround() throws Exception {
+        turnLeft();
+        turnLeft();
     }
 
     private void goUntilWall() throws Exception {
